@@ -26,7 +26,7 @@ import os
 from crewai import LLM
 
 # 1. 从系统环境变量中读取 Key（变量名建议统一叫 GEMINI_API_KEY）
-api_key = "AIzaSyB9c4_PbeRsndex0f0DGQ-W_0XpC15WX8Y"
+api_key = os.getenv("GEMINI_API_KEY")
 
 # 2. 把读取到的 Key 传给 Gemini 模型
 llm = LLM(
@@ -34,6 +34,7 @@ llm = LLM(
     api_key=api_key,
     temperature=0.5
 )
+
 
 
 @CrewBase
