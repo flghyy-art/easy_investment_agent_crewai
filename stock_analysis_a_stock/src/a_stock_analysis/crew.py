@@ -21,19 +21,20 @@ base_url = os.getenv("OPENAI_BASE_URL")
 temperature = float(os.getenv("TEMPERATURE", "0.8"))
 max_tokens = int(os.getenv("MAX_TOKENS", "14000"))
 
+
+import os
 from crewai import LLM
+
+# 1. 从系统环境变量中读取 Key（变量名建议统一叫 GEMINI_API_KEY）
+api_key = "AIzaSyB9c4_PbeRsndex0f0DGQ-W_0XpC15WX8Y"
+
+# 2. 把读取到的 Key 传给 Gemini 模型
 llm = LLM(
-    model=f"openai/{model_name}", # 使用环境变量中的模型名称
+    model="gemini/gemini-1.5-pro",
     api_key=api_key,
-    base_url=base_url,
-    temperature=temperature,
-    max_tokens=max_tokens,
-    top_p=0.9,
-    frequency_penalty=0.1,
-    presence_penalty=0.1,
-    stop=["END"],
-    seed=42
+    temperature=0.5
 )
+
 
 @CrewBase
 class AStockAnalysisCrew:
